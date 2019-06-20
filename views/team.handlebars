@@ -4,37 +4,17 @@
   <h1>Our Team</h1>
 </div>
 <div class="page__content">
-  <section class="team__person">
-    <div class="team__person_picture">
-      <img src="https://via.placeholder.com/200">
-    </div>
-    <div class="team__person_about">
-      <div class="team__person_title">
-        <span class="team__person_name">Name Namerson</span> - President
+  {{#each team}}
+    <section class="team__person">
+      <div class="team__person_picture">
+        <img src="{{this.picture}}">
       </div>
-      <p class="team__person_description">name, year, major, hometown, personal statement, and short description of what role entails (if the director has a committee, mention committee names here)</p>
-    </div>
-  </section>
-  <section class="team__person">
-    <div class="team__person_picture">
-      <img src="https://via.placeholder.com/200">
-    </div>
-    <div class="team__person_about">
-      <div class="team__person_title">
-        <span class="team__person_name">Name Namerson</span> - President
+      <div class="team__person_about">
+        <div class="team__person_title">
+          <span class="team__person_name">{{this.name}}</span> - {{this.title}}
+        </div>
+        <p class="team__person_description">{{this.description}}</p>
       </div>
-      <p class="team__person_description">name, year, major, hometown, personal statement, and short description of what role entails (if the director has a committee, mention committee names here)</p>
-    </div>
-  </section>
-  <section class="team__person">
-    <div class="team__person_picture">
-      <img src="https://via.placeholder.com/200">
-    </div>
-    <div class="team__person_about">
-      <div class="team__person_title">
-        <span class="team__person_name">Name Namerson</span> - President
-      </div>
-      <p class="team__person_description">name, year, major, hometown, personal statement, and short description of what role entails (if the director has a committee, mention committee names here)</p>
-    </div>
-  </section>
+    </section>
+  {{/each}}
 </div>

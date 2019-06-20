@@ -20,7 +20,33 @@ app.get('/about', function (req, res) {
     res.render('about', {title: 'About | Purdue Timmy Global Health'});
 });
 app.get('/team', function (req, res) {
-    res.render('team', {title: 'Our Team | Purdue Timmy Global Health'});
+  const team = [
+    {
+      name: 'Namerson',
+      title: 'President',
+      description: 'name, year, major, hometown, personal statement, and short description of what role entails (if the director has a committee, mention committee names here)',
+      picture: 'https://via.placeholder.com/200'
+    },
+    {
+      name: 'Namerson',
+      title: 'President',
+      description: 'name, year, major, hometown, personal statement, and short description of what role entails (if the director has a committee, mention committee names here)',
+      picture: 'https://via.placeholder.com/200'
+    },
+    {
+      name: 'Namerson',
+      title: 'President',
+      description: 'name, year, major, hometown, personal statement, and short description of what role entails (if the director has a committee, mention committee names here)',
+      picture: 'https://via.placeholder.com/200'
+    },
+    {
+      name: 'Namerson',
+      title: 'President',
+      description: 'name, year, major, hometown, personal statement, and short description of what role entails (if the director has a committee, mention committee names here)',
+      picture: 'https://via.placeholder.com/200'
+    }
+  ]
+    res.render('team', {title: 'Our Team | Purdue Timmy Global Health', team: team});
 });
 app.get('/join', function (req, res) {
     res.render('join', {title: 'Get Involved | Purdue Timmy Global Health'});
@@ -28,5 +54,9 @@ app.get('/join', function (req, res) {
 app.get('/timmytimes', function (req, res) {
     res.render('timmytimes', {title: 'TimmyTimes | Purdue Timmy Global Health'});
 });
+app.get('*', function (req, res) {
+    res.render('404', {title: '404 | Purdue Timmy Global Health'});
+});
+
 
 var server = app.listen(port);

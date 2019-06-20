@@ -112,5 +112,36 @@ nav {
   font-weight: bold;
 }
 .team__person_description {
-  
+
+}
+
+/* JOIN */
+.join__calendar {
+  text-align: center;
+  margin: 32px 0;
+}
+.join__contact {
+  margin-bottom: 32px;
+}
+.join__contact_label {
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+.join__contact input[type="text"], .join__contact input[type="email"] {
+    width: 100%;
+    padding: 9px 12px;
+}
+.join__contact textarea {
+  width: 100%;
+  resize: none;
+  height: 100px;
+  padding: 9px 12px;
+
+}
+.join__contact_submit {
+  padding: 12px 24px;
+  border: none;
+  background: #5F99E7;
+  color: #FFFFFF;
+  margin-top: 16px;
 }

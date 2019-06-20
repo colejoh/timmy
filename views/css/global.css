@@ -85,11 +85,32 @@ nav {
 /* PAGES */
 .page__header {
   width: 100%;
-  background: #1B2339;
+  background: #1C163C;
   height: 90px;
+}
+.page__title {
+  border-bottom: 2px solid #F5F4F5;
+  text-align: center;
 }
 .page__content {
   max-width: 1000px;
   margin: auto;
   padding: 0 32px;
+}
+
+/* TEAM */
+.team__person {
+  display: flex;
+  margin: 32px 0;
+  width: 100%;
+}
+.team__person_about {
+  margin: 0 16px;
+}
+.team__person_name {
+  font-size: 16px;
+  font-weight: bold;
+}
+.team__person_description {
+  
 }

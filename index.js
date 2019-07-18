@@ -1,6 +1,7 @@
 const express         = require('express');
 const bodyParser      = require('body-parser');
 const exphbs          = require('express-handlebars');
+const blockspring     = require('blockspring');
 const port = process.env.PORT || 5000;
 
 require('dotenv').config();
@@ -14,6 +15,17 @@ app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 
 app.get('/', function (req, res) {
+    var query = "SELECT *";
+
+    // blockspring.runParsed("query-google-spreadsheet", {
+    //    "query": query,
+    //    "url": "https://docs.google.com/spreadsheets/d/1GbH7U-0cQXYZAzCg0be5MdQlkYu7XFssJA4zM4gkaYM"
+    //  }, { cache: true, expiry: 7200}, function(res) {
+    //    response.json(res.params.data);
+    //    // response.addOutput('cards', res.params.data);
+    //    // response.end();
+    // });
+
     res.render('home', {title: 'Purdue Timmy Global Health'});
 });
 app.get('/about', function (req, res) {

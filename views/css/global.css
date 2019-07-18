@@ -29,6 +29,9 @@ nav {
   color: #FFFFFF;
   font-weight: bold;
 }
+.nav__logo img {
+  width: 200px;
+}
 .nav__items {
   display: flex;
   text-transform: uppercase;
@@ -42,6 +45,27 @@ nav {
   margin: 0 8px;
   color: #FFFFFF;
   letter-spacing: .5px;
+}
+
+@media(max-width: 760px) {
+  nav {
+    display: block;
+    text-align: center;
+    margin-top: 16px;
+  }
+  .nav__items {
+    margin-top: 16px;
+    display: block;
+  }
+  .nav__items a {
+    display: inline-block;
+  }
+}
+
+@media(max-width: 530px) {
+  .nav__items a {
+    margin-bottom: 8px;
+  }
 }
 
 /* HOME */

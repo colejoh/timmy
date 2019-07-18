@@ -11,8 +11,19 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,800|Raleway:400,800&display=swap" rel="stylesheet">
 
     <!-- Local CSS -->
-    <link rel="stylesheet" href="css/layout.css" />
-    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="/css/layout.css" />
+    <link rel="stylesheet" href="/css/global.css" />
+
+    <script type="text/javascript">
+      function showDropdown(ele) {
+        const dropdown = ele.childNodes[1]; // child node 0 is nav text
+        dropdown.style.display = "block";
+      }
+      function hideDropdown(ele) {
+        const dropdown = ele.childNodes[1]; // child node 0 is nav text
+        dropdown.style.display = "none";
+      }
+    </script>
 
     <title>{{title}}</title>
   </head>
@@ -21,6 +32,16 @@
       <a href="/"><div class="nav__logo"><img src="../img/TGH_Header_Logo.png" width="100%" height="auto"/></div></a>
       <div class="nav__items">
         <a href="/about"><div class="nav__item">About Us</div></a>
+        <a href="/what_we_do/fundraising">
+          <div class="nav__item" id="nav__item-what_we_do" onmouseover="showDropdown(this)" onmouseout="hideDropdown(this)">
+            <span>What We Do<span>
+            <ul class="nav__item_dropdown" id="nav__item_dropdown-what_we_do">
+              <li><a href="/what_we_do/fundraising">Fundraising</a></li>
+              <li><a href="/what_we_do/advocacy">Advocacy</a></li>
+              <li><a href="/what_we_do/service">Service</a></li>
+            </ul>
+          </div>
+        </a>
         <a href="/team"><div class="nav__item">Meet The Team</div></a>
         <a href="/join"><div class="nav__item">Get Involved</div></a>
         <a href="/timmytimes"><div class="nav__item">Timmytimes</div></a>
@@ -28,4 +49,5 @@
     </nav>
     {{{body}}}
   </body>
+
 </html>

@@ -31,6 +31,15 @@ app.get('/', function (req, res) {
 app.get('/about', function (req, res) {
     res.render('about', {title: 'About | Purdue Timmy Global Health'});
 });
+app.get('/what_we_do/fundraising', function (req, res) {
+    res.render('what_we_do/fundraising', {title: 'About | Purdue Timmy Global Health'});
+});
+app.get('/what_we_do/advocacy', function (req, res) {
+    res.render('what_we_do/advocacy', {title: 'About | Purdue Timmy Global Health'});
+});
+app.get('/what_we_do/service', function (req, res) {
+    res.render('what_we_do/service', {title: 'About | Purdue Timmy Global Health'});
+});
 app.get('/team', function (req, res) {
   const team = [
     {

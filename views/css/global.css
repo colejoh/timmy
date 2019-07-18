@@ -41,13 +41,37 @@ nav {
   font-family: 'Raleway', sans-serif;
 }
 .nav__item {
-  padding: 0 8px;
+  padding: 8px 8px;
   margin: 0 8px;
   color: #FFFFFF;
   letter-spacing: .5px;
+  position: relative;
 }
-
-@media(max-width: 760px) {
+.nav__item span {
+  color: #FFFFFF;
+}
+.nav__item_dropdown {
+  position: absolute;
+  top: 16px;
+  left: 0;
+  display: none;
+  background: #5F99E7;
+  list-style-type: none;
+  padding: 8px;
+  z-index: 1;
+  color: #FFF;
+}
+.nav__item_dropdown li {
+  padding: 4px 0;
+  color: #FFFFFF;
+}
+.nav__item_dropdown li a {
+  color: #FFFFFF;
+}
+.nav__item_dropdown li:hover {
+  text-decoration: underline;
+}
+@media(max-width: 890px) {
   nav {
     display: block;
     text-align: center;

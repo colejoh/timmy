@@ -3,18 +3,32 @@
 <div class="page__title">
   <h1>Our Team</h1>
 </div>
+<script>
+  function showPersonInfo(ele) {
+    const description = [ele.childNodes[3],ele.childNodes[5]]; // child node 0 is nav text
+    description.forEach(node => node.style.display = "block");
+  }
+
+  function hidePersonInfo(ele) {
+    const description = [ele.childNodes[3],ele.childNodes[5]]; // child node 0 is nav text
+    description.forEach(node => node.style.display = "none");
+  }
+</script>
 <div class="page__content">
-  {{#each team}}
-    <section class="team__person">
-      <div class="team__person_picture">
-        <img src="{{this.picture}}">
-      </div>
-      <div class="team__person_about">
-        <div class="team__person_title">
-          <span class="team__person_name">{{this.name}}</span> - {{this.title}}
+  <section class="team__people">
+    {{#each team}}
+      <div class="team__person" onmouseover="showPersonInfo(this)" onmouseout="hidePersonInfo(this)">
+        <div class="team__person_picture">
+          <img src="{{this.picture}}">
         </div>
-        <p class="team__person_description">{{this.description}}</p>
+        <div class="team__person_picture-block"></div>
+        <div class="team__person_about">
+          <div class="team__person_title">
+            <span class="team__person_name">{{this.name}}</span> - {{this.title}}
+          </div>
+          <p class="team__person_description">{{this.description}}</p>
+        </div>
       </div>
-    </section>
-  {{/each}}
+    {{/each}}
+  </section>
 </div>

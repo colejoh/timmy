@@ -46,25 +46,25 @@ app.get('/team', function (req, res) {
       name: 'Namerson',
       title: 'President',
       description: 'name, year, major, hometown, personal statement, and short description of what role entails (if the director has a committee, mention committee names here)',
-      picture: 'https://via.placeholder.com/200'
+      picture: 'https://via.placeholder.com/300'
     },
     {
       name: 'Namerson',
       title: 'President',
       description: 'name, year, major, hometown, personal statement, and short description of what role entails (if the director has a committee, mention committee names here)',
-      picture: 'https://via.placeholder.com/200'
+      picture: 'https://via.placeholder.com/300'
     },
     {
       name: 'Namerson',
       title: 'President',
       description: 'name, year, major, hometown, personal statement, and short description of what role entails (if the director has a committee, mention committee names here)',
-      picture: 'https://via.placeholder.com/200'
+      picture: 'https://via.placeholder.com/300'
     },
     {
       name: 'Namerson',
       title: 'President',
       description: 'name, year, major, hometown, personal statement, and short description of what role entails (if the director has a committee, mention committee names here)',
-      picture: 'https://via.placeholder.com/200'
+      picture: 'https://via.placeholder.com/300'
     }
   ]
     res.render('team', {title: 'Our Team | Purdue Timmy Global Health', team: team});

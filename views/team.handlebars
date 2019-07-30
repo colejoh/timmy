@@ -17,6 +17,7 @@
 <div class="page__content">
   <section class="team__people">
     {{#each team}}
+      <a href="#{{@index}}">
       <div class="team__person" onmouseover="showPersonInfo(this)" onmouseout="hidePersonInfo(this)">
         <div class="team__person_picture">
           <img src="{{this.picture}}">
@@ -29,6 +30,20 @@
           <p class="team__person_description">{{this.description}}</p>
         </div>
       </div>
+      </a>
     {{/each}}
+  </section>
+
+  <section id="0">
+    <h1>Section 0</h1>
+  </section>
+  <section id="1">
+    <h1>Section 1</h1>
+  </section>
+  <section id="2">
+    <h1>Section 2</h1>
+  </section>
+  <section id="3">
+    <h1>Section 3</h1>
   </section>
 </div>

@@ -157,6 +157,7 @@ nav {
   display: flex;
   margin: 16px;
   position: relative;
+  color: #000000;
 }
 .team__person_picture-block {
   width: 100%;

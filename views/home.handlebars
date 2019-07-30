@@ -1,4 +1,4 @@
-<header class="home__header">
+<header class="home__header" id="gallery">
   <div class="home__header_content_wrapper">
     <div class="home__header_content">
       <h1>A Global Mission</h1>
@@ -32,3 +32,30 @@
     firsthand.
   </p>
 </div>
+
+<script>
+(function() {
+  const images = JSON.parse(decodeURIComponent("{{{images}}}"));
+  const gal = document.getElementById('gallery');
+  const len = 1000; // Length image stays
+  const url = buildUrl(images[0]);
+  // set image when page loads
+  gal.style.backgroundImage="url('" + url + "')";
+
+  // then loop
+  loopGal(gal, images, 1);
+})()
+
+function loopGal(gal, images, i) {
+  setTimeout(function() {
+    const url = buildUrl(images[i]);
+    gal.style.backgroundImage="url('" + url + "')";
+    // console.log((i++)%(images.length));
+    loopGal(gal, images, (++i)%(images.length));
+  }, 5000);
+}
+
+function buildUrl(img) {
+  return window.location.href + "assets/gallery/" + img;
+}
+</script>

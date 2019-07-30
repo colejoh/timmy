@@ -2,6 +2,8 @@ const express         = require('express');
 const bodyParser      = require('body-parser');
 const exphbs          = require('express-handlebars');
 const blockspring     = require('blockspring');
+const fs = require('fs');
+
 const port = process.env.PORT || 5000;
 
 require('dotenv').config();
@@ -17,6 +19,18 @@ app.set('view engine', 'handlebars');
 app.get('/', function (req, res) {
     var query = "SELECT *";
 
+    const gal = './assets/gallery';
+
+    fs.readdir(gal, (err, files) => {
+      console.log(files);
+      const json = encodeURIComponent(JSON.stringify(files));
+      console.log(json);
+
+      res.render('home', {
+        title: 'Purdue Timmy Global Health',
+        images: json
+      });
+    });
     // blockspring.runParsed("query-google-spreadsheet", {
     //    "query": query,
     //    "url": "https://docs.google.com/spreadsheets/d/1GbH7U-0cQXYZAzCg0be5MdQlkYu7XFssJA4zM4gkaYM"
@@ -26,7 +40,6 @@ app.get('/', function (req, res) {
     //    // response.end();
     // });
 
-    res.render('home', {title: 'Purdue Timmy Global Health'});
 });
 app.get('/about', function (req, res) {
     res.render('about', {title: 'About | Purdue Timmy Global Health'});
@@ -75,6 +88,8 @@ app.get('/join', function (req, res) {
 app.get('/timmytimes', function (req, res) {
     res.render('timmytimes', {title: 'TimmyTimes | Purdue Timmy Global Health'});
 });
+app.use('/assets', express.static('assets'))
+
 app.get('*', function (req, res) {
     res.render('404', {title: '404 | Purdue Timmy Global Health'});
 });

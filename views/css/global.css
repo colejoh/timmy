@@ -94,7 +94,7 @@ nav {
 
 /* HOME */
 .home__header {
-  background: url('../img/group.jpg');
+  /* background-image: url('../img/group.jpg'); */
   background-size: cover;
   background-position: center;
   width: 100%;

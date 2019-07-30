@@ -3,3 +3,10 @@
 <div class="page__title">
   <h1>Timmy Times</h1>
 </div>
+<div class="page__content">
+  <ul>
+    {{#each timmytimes}}
+      <li><a href="/assets/timmytimes/{{this}}">{{this}}</a></li>
+    {{/each}}
+  </ul>
+</div>

@@ -39,16 +39,16 @@ app.get('/', function (req, res) {
 
 });
 app.get('/about', function (req, res) {
-    res.render('about', {title: 'About | Purdue Timmy Global Health'});
+  res.render('about', {title: 'About | Purdue Timmy Global Health'});
 });
 app.get('/what_we_do/fundraising', function (req, res) {
-    res.render('what_we_do/fundraising', {title: 'About | Purdue Timmy Global Health'});
+  res.render('what_we_do/fundraising', {title: 'About | Purdue Timmy Global Health'});
 });
 app.get('/what_we_do/advocacy', function (req, res) {
-    res.render('what_we_do/advocacy', {title: 'About | Purdue Timmy Global Health'});
+  res.render('what_we_do/advocacy', {title: 'About | Purdue Timmy Global Health'});
 });
 app.get('/what_we_do/service', function (req, res) {
-    res.render('what_we_do/service', {title: 'About | Purdue Timmy Global Health'});
+  res.render('what_we_do/service', {title: 'About | Purdue Timmy Global Health'});
 });
 app.get('/team', function (req, res) {
   const team = [
@@ -80,15 +80,24 @@ app.get('/team', function (req, res) {
     res.render('team', {title: 'Our Team | Purdue Timmy Global Health', team: team});
 });
 app.get('/join', function (req, res) {
-    res.render('join', {title: 'Get Involved | Purdue Timmy Global Health'});
+  res.render('join', {title: 'Get Involved | Purdue Timmy Global Health'});
 });
 app.get('/timmytimes', function (req, res) {
-    res.render('timmytimes', {title: 'TimmyTimes | Purdue Timmy Global Health'});
+  const timmytimes = './assets/timmytimes';
+
+  fs.readdir(timmytimes, (err, files) => {
+    const json = encodeURIComponent(JSON.stringify(files));
+    res.render('timmytimes', {
+      title: 'TimmyTimes | Purdue Timmy Global Health',
+      timmytimes: files
+    });
+  });
+
 });
 app.use('/assets', express.static('assets'))
 
 app.get('*', function (req, res) {
-    res.render('404', {title: '404 | Purdue Timmy Global Health'});
+  res.render('404', {title: '404 | Purdue Timmy Global Health'});
 });
 
 

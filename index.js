@@ -18,13 +18,10 @@ app.set('view engine', 'handlebars');
 
 app.get('/', function (req, res) {
     var query = "SELECT *";
-
     const gal = './assets/gallery';
 
     fs.readdir(gal, (err, files) => {
-      console.log(files);
       const json = encodeURIComponent(JSON.stringify(files));
-      console.log(json);
 
       res.render('home', {
         title: 'Purdue Timmy Global Health',

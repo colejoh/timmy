@@ -27,6 +27,14 @@
         const dropdown = ele.childNodes[1]; // child node 0 is nav text
         dropdown.style.display = "none";
       }
+      function showMobile(ele) {
+        const wrapper = document.getElementById('mobile_nav__wrapper');
+        wrapper.style.display = "block";
+      }
+      function hideMobile() {
+        const wrapper = document.getElementById('mobile_nav__wrapper');
+        wrapper.style.display = "none";
+      }
     </script>
     <title>{{title}}</title>
   </head>
@@ -49,8 +57,28 @@
         <a href="/join"><div class="nav__item">Get Involved</div></a>
         <a href="/timmytimes"><div class="nav__item">Timmytimes</div></a>
       </div>
+      <div class="mobile_nav">
+        <div class="mobile_nav__hamburger" onclick="showMobile(this)">☰</div>
+        <div id="mobile_nav__wrapper">
+          <div class="mobile_nav__overlay" onclick="hideMobile(this)"></div>
+          <div class="mobile_nav__menu">
+            <ul>
+              <li><a href="/about">About Us</a></li>
+              <li>What We Do</li>
+              <ul>
+                <li><a href="/what_we_do/fundraising">Fundraising</a></li>
+                <li><a href="/what_we_do/advocacy">Advocacy</a></li>
+                <li><a href="/what_we_do/service">Service</a></li>
+              </ul>
+              <li><a href="/team">Meet The Team</a></li>
+              <li><a href="/join">Get Involved</a></li>
+              <li><a href="/timmytimes">Timmytimes</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </nav>
+
     {{{body}}}
-    <script src="../script/gallery.js"></script>
   </body>
 </html>

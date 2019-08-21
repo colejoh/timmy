@@ -2,7 +2,10 @@ const express         = require('express');
 const bodyParser      = require('body-parser');
 const exphbs          = require('express-handlebars');
 const blockspring     = require('blockspring');
-const fs = require('fs');
+const fs              = require('fs');
+const {google}        = require('googleapis');
+const GoogleSpreadsheet = require('google-spreadsheet');
+const doc = new GoogleSpreadsheet('1GbH7U-0cQXYZAzCg0be5MdQlkYu7XFssJA4zM4gkaYM');
 
 const port = process.env.PORT || 5000;
 
@@ -12,43 +15,83 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('views'));
-
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 
-app.get('/', function (req, res) {
-    var query = "SELECT *";
-    const gal = './assets/gallery';
+function formatData(data) {
+  let formatted = {};
+  data.forEach(datam => {
+    if (!formatted[datam.page]) formatted[datam.page] = {};
+    formatted[datam.page][datam.section] = datam.content;
+  })
+  return formatted;
+}
 
-    fs.readdir(gal, (err, files) => {
-      const json = encodeURIComponent(JSON.stringify(files));
-
-      res.render('home', {
-        title: 'Purdue Timmy Global Health',
-        images: json
+function getData() {
+  return new Promise((resolve, reject) => {
+    doc.getInfo(function(err, info) {
+      if (err) {
+        reject(err)
+      }
+      sheet = info.worksheets[0];
+      sheet.getRows({ offset: 1, limit: 100, orderby: 'col2' }, function( err, rows ){
+        const clearRows = rows.map(row => {return {page: row.page, section: row.section, content: row.content}})
+        const formattedData = formatData(clearRows);
+        resolve(formattedData);
       });
     });
-    // blockspring.runParsed("query-google-spreadsheet", {
-    //    "query": query,
-    //    "url": "https://docs.google.com/spreadsheets/d/1GbH7U-0cQXYZAzCg0be5MdQlkYu7XFssJA4zM4gkaYM"
-    //  }, { cache: true, expiry: 7200}, function(res) {
-    //    response.json(res.params.data);
-    //    // response.addOutput('cards', res.params.data);
-    //    // response.end();
-    // });
+  });
+}
 
+app.get('/', function (req, res) {
+    const gal = './assets/gallery';
+
+    getData().then((data) => {
+      fs.readdir(gal, (err, files) => {
+        const json = encodeURIComponent(JSON.stringify(files));
+
+        res.render('home', {
+          title: 'Purdue Timmy Global Health',
+          images: json,
+          mission: data.home.mission,
+          goals: data.home.goals,
+          tagline_1: data.home.tagline_1,
+          tagline_2: data.home.tagline_2
+        });
+      });
+    })
 });
 app.get('/about', function (req, res) {
-  res.render('about', {title: 'About | Purdue Timmy Global Health'});
+  getData().then((data) => {
+    res.render('about', {
+      title: 'About | Purdue Timmy Global Health',
+      main: data.about.main
+    });
+  })
 });
 app.get('/what_we_do/fundraising', function (req, res) {
-  res.render('what_we_do/fundraising', {title: 'About | Purdue Timmy Global Health'});
+  getData().then((data) => {
+    res.render('what_we_do/fundraising', {
+      title: 'Fundraising | Purdue Timmy Global Health',
+      main: data.fundraising.main
+    });
+  })
 });
 app.get('/what_we_do/advocacy', function (req, res) {
-  res.render('what_we_do/advocacy', {title: 'About | Purdue Timmy Global Health'});
+  getData().then((data) => {
+    res.render('what_we_do/advocacy', {
+      title: 'Advocacy | Purdue Timmy Global Health',
+      main: data.advocacy.main
+    });
+  })
 });
 app.get('/what_we_do/service', function (req, res) {
-  res.render('what_we_do/service', {title: 'About | Purdue Timmy Global Health'});
+  getData().then((data) => {
+    res.render('what_we_do/service', {
+      title: 'Service | Purdue Timmy Global Health',
+      main: data.service.main
+    });
+  })
 });
 app.get('/team', function (req, res) {
   const team = [

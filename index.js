@@ -18,6 +18,10 @@ app.use(express.static('views'));
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 
+/*
+  This function just makes a nested object where the page is the parent and
+  then the section data is pages;
+*/
 function formatData(data) {
   let formatted = {};
   data.forEach(datam => {
@@ -27,7 +31,7 @@ function formatData(data) {
   return formatted;
 }
 
-function getData() {
+function getData(type) {
   return new Promise((resolve, reject) => {
     doc.getInfo(function(err, info) {
       if (err) {
@@ -35,9 +39,16 @@ function getData() {
       }
       sheet = info.worksheets[0];
       sheet.getRows({ offset: 1, limit: 100, orderby: 'col2' }, function( err, rows ){
-        const clearRows = rows.map(row => {return {page: row.page, section: row.section, content: row.content}})
-        const formattedData = formatData(clearRows);
-        resolve(formattedData);
+        let clearRows;
+        if (type === 'team') {
+          clearRows = rows.filter(row => {return row.page === 'team'});
+          clearRows = rows.map(row => {return {name: row.name, section: row.section, content: row.content, role: row.role, image: row.image}});
+          resolve(clearRows);
+        } else {
+          clearRows = rows.map(row => {return {page: row.page, section: row.section, content: row.content}});
+          const formattedData = formatData(clearRows);
+          resolve(formattedData);
+        }
       });
     });
   });
@@ -93,34 +104,46 @@ app.get('/what_we_do/service', function (req, res) {
     });
   })
 });
+
+const getTeamSection = (team, section) => {
+  return team.filter(member => { return member.section.includes(section)})
+}
+
 app.get('/team', function (req, res) {
-  getData().then((data) => {
-    const team = [
-      {
-        name: data.team.quad_1_name,
-        title: data.team.quad_1_role,
-        description: '',
-        picture: data.team.quad_1_image
-      },
-      {
-        name: data.team.quad_2_name,
-        title: data.team.quad_2_role,
-        description: '',
-        picture: data.team.quad_2_image
-      },
-      {
-        name: data.team.quad_3_name,
-        title: data.team.quad_3_role,
-        description: '',
-        picture: data.team.quad_3_image
-      },
-      {
-        name: data.team.quad_4_name,
-        title: data.team.quad_4_role,
-        description: '',
-        picture: data.team.quad_4_image
-      }
-    ]
+  getData('team').then((data) => {
+    // const team = [
+    //   {
+    //     name: data.team.quad_1_name,
+    //     title: data.team.quad_1_role,
+    //     description: '',
+    //     picture: data.team.quad_1_image
+    //   },
+    //   {
+    //     name: data.team.quad_2_name,
+    //     title: data.team.quad_2_role,
+    //     description: '',
+    //     picture: data.team.quad_2_image
+    //   },
+    //   {
+    //     name: data.team.quad_3_name,
+    //     title: data.team.quad_3_role,
+    //     description: '',
+    //     picture: data.team.quad_3_image
+    //   },
+    //   {
+    //     name: data.team.quad_4_name,
+    //     title: data.team.quad_4_role,
+    //     description: '',
+    //     picture: data.team.quad_4_image
+    //   }
+    // ]
+
+    const team = {
+      quad: getTeamSection(data, 'quad'),
+      finance: getTeamSection(data, 'finance'),
+      advocacy: getTeamSection(data, 'advocacy'),
+      service: getTeamSection(data, 'service'),
+    };
 
     res.render('team', {
       title: 'Our Team | Purdue Timmy Global Health',

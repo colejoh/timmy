@@ -189,6 +189,10 @@ nav {
   flex-wrap: wrap;
   justify-content:center;
 }
+.team__people--small a{
+  width: 25%;
+  overflow: hidden;
+}
 .team__person {
   display: flex;
   margin: 16px;

@@ -16,34 +16,75 @@
 </script>
 <div class="page__content">
   <section class="team__people">
-    {{#each team}}
+    {{#each team.quad}}
       <a href="#{{@index}}">
       <div class="team__person" onmouseover="showPersonInfo(this)" onmouseout="hidePersonInfo(this)">
         <div class="team__person_picture">
-          <img src="{{this.picture}}">
+          <img src="{{this.image}}">
         </div>
         <div class="team__person_picture-block"></div>
         <div class="team__person_about">
           <div class="team__person_title">
-            <span class="team__person_name">{{this.name}}</span> - {{this.title}}
+            <span class="team__person_name">{{this.name}}</span> - {{this.role}}
           </div>
-          <p class="team__person_description">{{this.description}}</p>
+          <p class="team__person_description">{{this.content}}</p>
         </div>
       </div>
       </a>
     {{/each}}
   </section>
-
-  <section id="0">
-    <h1>Finance Branch</h1>
+  <a id='1'></a>
+  <h1>Finance Branch</h1>
+  <section class="team__people">
+    {{#each team.finance}}
+      <div class="team__person" onmouseover="showPersonInfo(this)" onmouseout="hidePersonInfo(this)">
+        <div class="team__person_picture">
+          <img src="{{this.image}}">
+        </div>
+        <div class="team__person_picture-block"></div>
+        <div class="team__person_about">
+          <div class="team__person_title">
+            <span class="team__person_name">{{this.name}}</span> - {{this.role}}
+          </div>
+          <p class="team__person_description">{{this.content}}</p>
+        </div>
+      </div>
+    {{/each}}
   </section>
-  <section id="1">
-    <h1>Section 1</h1>
+  <a id='2'></a>
+  <h1>Service Branch</h1>
+  <section class="team__people">
+    {{#each team.advocacy}}
+      <div class="team__person" onmouseover="showPersonInfo(this)" onmouseout="hidePersonInfo(this)">
+        <div class="team__person_picture">
+          <img src="{{this.image}}">
+        </div>
+        <div class="team__person_picture-block"></div>
+        <div class="team__person_about">
+          <div class="team__person_title">
+            <span class="team__person_name">{{this.name}}</span> - {{this.role}}
+          </div>
+          <p class="team__person_description">{{this.content}}</p>
+        </div>
+      </div>
+    {{/each}}
   </section>
-  <section id="2">
-    <h1>Section 2</h1>
-  </section>
-  <section id="3">
-    <h1>Section 3</h1>
+  <a id='3'></a>
+  <h1>Service Branch</h1>
+  <section class="team__people">
+    {{#each team.service}}
+      <div class="team__person" onmouseover="showPersonInfo(this)" onmouseout="hidePersonInfo(this)">
+        <div class="team__person_picture">
+          <img src="{{this.image}}">
+        </div>
+        <div class="team__person_picture-block"></div>
+        <div class="team__person_about">
+          <div class="team__person_title">
+            <span class="team__person_name">{{this.name}}</span> - {{this.role}}
+          </div>
+          <p class="team__person_description">{{this.content}}</p>
+        </div>
+      </div>
+    {{/each}}
   </section>
 </div>

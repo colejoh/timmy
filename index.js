@@ -94,33 +94,39 @@ app.get('/what_we_do/service', function (req, res) {
   })
 });
 app.get('/team', function (req, res) {
-  const team = [
-    {
-      name: 'Namerson',
-      title: 'President',
-      description: 'name, year, major, hometown, personal statement, and short description of what role entails (if the director has a committee, mention committee names here)',
-      picture: 'https://via.placeholder.com/300'
-    },
-    {
-      name: 'Namerson',
-      title: 'President',
-      description: 'name, year, major, hometown, personal statement, and short description of what role entails (if the director has a committee, mention committee names here)',
-      picture: 'https://via.placeholder.com/300'
-    },
-    {
-      name: 'Namerson',
-      title: 'President',
-      description: 'name, year, major, hometown, personal statement, and short description of what role entails (if the director has a committee, mention committee names here)',
-      picture: 'https://via.placeholder.com/300'
-    },
-    {
-      name: 'Namerson',
-      title: 'President',
-      description: 'name, year, major, hometown, personal statement, and short description of what role entails (if the director has a committee, mention committee names here)',
-      picture: 'https://via.placeholder.com/300'
-    }
-  ]
-    res.render('team', {title: 'Our Team | Purdue Timmy Global Health', team: team});
+  getData().then((data) => {
+    const team = [
+      {
+        name: data.team.quad_1_name,
+        title: data.team.quad_1_role,
+        description: '',
+        picture: data.team.quad_1_image
+      },
+      {
+        name: data.team.quad_2_name,
+        title: data.team.quad_2_role,
+        description: '',
+        picture: data.team.quad_2_image
+      },
+      {
+        name: data.team.quad_3_name,
+        title: data.team.quad_3_role,
+        description: '',
+        picture: data.team.quad_3_image
+      },
+      {
+        name: data.team.quad_4_name,
+        title: data.team.quad_4_role,
+        description: '',
+        picture: data.team.quad_4_image
+      }
+    ]
+
+    res.render('team', {
+      title: 'Our Team | Purdue Timmy Global Health',
+      team: team
+    });
+  })
 });
 app.get('/join', function (req, res) {
   res.render('join', {title: 'Get Involved | Purdue Timmy Global Health'});

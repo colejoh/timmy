@@ -6,45 +6,43 @@
 <script>
   function showPersonInfo(ele) {
     const description = [ele.childNodes[3],ele.childNodes[5]]; // child node 0 is nav text
-    description.forEach(node => node.style.display = "block");
+    description.forEach(node => {
+      if (node) node.style.display = "block";
+    });
   }
 
   function hidePersonInfo(ele) {
     const description = [ele.childNodes[3],ele.childNodes[5]]; // child node 0 is nav text
-    description.forEach(node => node.style.display = "none");
+    description.forEach(node => {
+      if (node) node.style.display = "none";
+    })
   }
 </script>
-<div class="page__content">
+<div class="page__content team">
   <section class="team__people">
     {{#each team.quad}}
-      <a href="#{{@index}}">
-      <div class="team__person" onmouseover="showPersonInfo(this)" onmouseout="hidePersonInfo(this)">
-        <div class="team__person_picture">
-          <img src="{{this.image}}">
-        </div>
+      <div style="background: url('{{this.image}}'); background-size: cover; background-position: center" class="team__person" onmouseover="showPersonInfo(this)" onmouseout="hidePersonInfo(this)">
         <div class="team__person_picture-block"></div>
         <div class="team__person_about">
           <div class="team__person_title">
-            <span class="team__person_name">{{this.name}}</span> - {{this.role}}
+            <span class="team__person_name">{{this.name}}</span><br/>
+            {{this.role}}
           </div>
           <p class="team__person_description">{{this.content}}</p>
         </div>
       </div>
-      </a>
     {{/each}}
   </section>
   <a id='1'></a>
   <h1>Finance Branch</h1>
   <section class="team__people">
     {{#each team.finance}}
-      <div class="team__person" onmouseover="showPersonInfo(this)" onmouseout="hidePersonInfo(this)">
-        <div class="team__person_picture">
-          <img src="{{this.image}}">
-        </div>
+      <div style="background: url('{{this.image}}'); background-size: cover; background-position: center" class="team__person" onmouseover="showPersonInfo(this)" onmouseout="hidePersonInfo(this)">
         <div class="team__person_picture-block"></div>
         <div class="team__person_about">
           <div class="team__person_title">
-            <span class="team__person_name">{{this.name}}</span> - {{this.role}}
+            <span class="team__person_name">{{this.name}}</span><br/>
+            {{this.role}}
           </div>
           <p class="team__person_description">{{this.content}}</p>
         </div>
@@ -52,17 +50,15 @@
     {{/each}}
   </section>
   <a id='2'></a>
-  <h1>Service Branch</h1>
+  <h1>Advocacy Branch</h1>
   <section class="team__people">
     {{#each team.advocacy}}
-      <div class="team__person" onmouseover="showPersonInfo(this)" onmouseout="hidePersonInfo(this)">
-        <div class="team__person_picture">
-          <img src="{{this.image}}">
-        </div>
+      <div style="background: url('{{this.image}}'); background-size: cover; background-position: center" class="team__person" onmouseover="showPersonInfo(this)" onmouseout="hidePersonInfo(this)">
         <div class="team__person_picture-block"></div>
         <div class="team__person_about">
           <div class="team__person_title">
-            <span class="team__person_name">{{this.name}}</span> - {{this.role}}
+            <span class="team__person_name">{{this.name}}</span><br/>
+            {{this.role}}
           </div>
           <p class="team__person_description">{{this.content}}</p>
         </div>
@@ -73,14 +69,12 @@
   <h1>Service Branch</h1>
   <section class="team__people">
     {{#each team.service}}
-      <div class="team__person" onmouseover="showPersonInfo(this)" onmouseout="hidePersonInfo(this)">
-        <div class="team__person_picture">
-          <img src="{{this.image}}">
-        </div>
+      <div style="background: url('{{this.image}}'); background-size: cover; background-position: center" class="team__person" onmouseover="showPersonInfo(this)" onmouseout="hidePersonInfo(this)">
         <div class="team__person_picture-block"></div>
         <div class="team__person_about">
           <div class="team__person_title">
-            <span class="team__person_name">{{this.name}}</span> - {{this.role}}
+            <span class="team__person_name">{{this.name}}</span><br/>
+            {{this.role}}
           </div>
           <p class="team__person_description">{{this.content}}</p>
         </div>

@@ -31,6 +31,11 @@ nav {
 }
 .nav__logo img {
   width: 200px;
+  transition: .2s;
+}
+.nav__logo img:hover {
+  transform: scale(1.02);
+  transition: .2s;
 }
 .nav__items {
   display: flex;
@@ -184,6 +189,9 @@ nav {
 }
 
 /* TEAM */
+.team h1 {
+  text-align: center;
+}
 .team__people {
   display: flex;
   flex-wrap: wrap;
@@ -197,7 +205,13 @@ nav {
   display: flex;
   margin: 16px;
   position: relative;
-  color: #000000;
+  color: #FFFFFF;
+  width: 25%;
+  height: 200px;
+}
+.team__person_picture img {
+  width: 100%;
+  height: auto;
 }
 .team__person_picture-block {
   width: 100%;
@@ -215,6 +229,8 @@ nav {
   left: 0;
   width: 100%;
   display: none;
+  background: rgba(0,0,0,0.3);
+  height: 100%;
 }
 .team__person_name {
   font-size: 16px;

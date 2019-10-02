@@ -67,7 +67,8 @@ app.get('/', function (req, res) {
           mission: data.home.mission,
           goals: data.home.goals,
           tagline_1: data.home.tagline_1,
-          tagline_2: data.home.tagline_2
+          tagline_2: data.home.tagline_2,
+          announcement: data.home.announcement
         });
       });
     })

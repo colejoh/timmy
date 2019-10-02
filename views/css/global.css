@@ -171,7 +171,14 @@ nav {
   color: #FFFFFF;
   text-decoration: none;
 }
-
+.home__announcement {
+  width: 100%;
+  padding: 16px 0;
+  text-align: center;
+  background: #5F99E7;
+  color: #FFFFFF;
+  font-weight: bold;
+}
 /* PAGES */
 .page__header {
   width: 100%;

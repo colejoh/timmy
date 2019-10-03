@@ -77,31 +77,50 @@ app.get('/about', function (req, res) {
   getData().then((data) => {
     res.render('about', {
       title: 'About | Purdue Timmy Global Health',
-      main: data.about.main
+      main: data.about.main,
+      images: json
     });
   })
 });
 app.get('/what_we_do/fundraising', function (req, res) {
+  const gal = './assets/fundraising';
+
   getData().then((data) => {
-    res.render('what_we_do/fundraising', {
-      title: 'Fundraising | Purdue Timmy Global Health',
-      main: data.fundraising.main
+    fs.readdir(gal, (err, files) => {
+      const json = encodeURIComponent(JSON.stringify(files));
+      res.render('what_we_do/fundraising', {
+        title: 'Fundraising | Purdue Timmy Global Health',
+        main: data.fundraising.main,
+        images: json
+      });
     });
   })
 });
 app.get('/what_we_do/advocacy', function (req, res) {
+  const gal = './assets/advocacy';
+
   getData().then((data) => {
-    res.render('what_we_do/advocacy', {
-      title: 'Advocacy | Purdue Timmy Global Health',
-      main: data.advocacy.main
+    fs.readdir(gal, (err, files) => {
+      const json = encodeURIComponent(JSON.stringify(files));
+      res.render('what_we_do/advocacy', {
+        title: 'Advocacy | Purdue Timmy Global Health',
+        main: data.advocacy.main,
+        images: json,
+      });
     });
   })
 });
 app.get('/what_we_do/service', function (req, res) {
+  const gal = './assets/service';
+
   getData().then((data) => {
-    res.render('what_we_do/service', {
-      title: 'Service | Purdue Timmy Global Health',
-      main: data.service.main
+    fs.readdir(gal, (err, files) => {
+      const json = encodeURIComponent(JSON.stringify(files));
+      res.render('what_we_do/service', {
+        title: 'Service | Purdue Timmy Global Health',
+        main: data.service.main,
+        images: json
+      });
     });
   })
 });

@@ -7,4 +7,27 @@
   <section>
     <p>{{ main }}</p>
   </section>
+  <div id="gallery"></div>
 </div>
+<script>
+(function() {
+  const images = JSON.parse(decodeURIComponent("{{{images}}}"));
+  const gal = document.getElementById('gallery');
+  const imageMap = images.map((img) => {
+    if (window.location.href.includes('local')) {
+      return 'http://localhost:5000/assets/service/' + img;
+    } else {
+      return 'http://purduetimmy.com/assets/service/' + img;
+    }
+  })
+
+  console.log(images, imageMap);
+
+  for(let i = 0; i < images.length; i++) {
+    let img = document.createElement("img");
+    img.src = imageMap[i];
+    img.style = "width: 100%; margin-bottom: 16px";
+    gal.appendChild(img);
+  }
+})()
+</script>

@@ -146,8 +146,6 @@ app.get('/team', function (req, res) {
       service: getTeamSection(data, 'service'),
     };
 
-    console.log(team.service);
-
     res.render('team', {
       title: 'Our Team | Purdue Timmy Global Health',
       team: team

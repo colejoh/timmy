@@ -112,33 +112,6 @@ const getTeamSection = (team, section) => {
 
 app.get('/team', function (req, res) {
   getData('team').then((data) => {
-    // const team = [
-    //   {
-    //     name: data.team.quad_1_name,
-    //     title: data.team.quad_1_role,
-    //     description: '',
-    //     picture: data.team.quad_1_image
-    //   },
-    //   {
-    //     name: data.team.quad_2_name,
-    //     title: data.team.quad_2_role,
-    //     description: '',
-    //     picture: data.team.quad_2_image
-    //   },
-    //   {
-    //     name: data.team.quad_3_name,
-    //     title: data.team.quad_3_role,
-    //     description: '',
-    //     picture: data.team.quad_3_image
-    //   },
-    //   {
-    //     name: data.team.quad_4_name,
-    //     title: data.team.quad_4_role,
-    //     description: '',
-    //     picture: data.team.quad_4_image
-    //   }
-    // ]
-
     const team = {
       quad: getTeamSection(data, 'quad'),
       finance: getTeamSection(data, 'finance'),

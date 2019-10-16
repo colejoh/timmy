@@ -74,13 +74,18 @@ app.get('/', function (req, res) {
     })
 });
 app.get('/about', function (req, res) {
+  const gal = './assets/about';
+
   getData().then((data) => {
-    res.render('about', {
-      title: 'About | Purdue Timmy Global Health',
-      main: data.about.main,
-      images: json
+    fs.readdir(gal, (err, files) => {
+      const json = encodeURIComponent(JSON.stringify(files));
+      res.render('about', {
+        title: 'About | Purdue Timmy Global Health',
+        main: data.about.main,
+        images: json
+      });
     });
-  })
+  });
 });
 app.get('/what_we_do/fundraising', function (req, res) {
   const gal = './assets/fundraising';

@@ -34,7 +34,6 @@ function loopGal(gal, images, i) {
   setTimeout(function() {
     const url = buildUrl(images[i]);
     gal.style.backgroundImage="url('" + url + "')";
-    // console.log((i++)%(images.length));
     loopGal(gal, images, (++i)%(images.length));
   }, 5000);
 }
